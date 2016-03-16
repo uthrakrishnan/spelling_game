@@ -8,14 +8,30 @@
     var $nextWord = $('#nextWord'); 
     var currWordPool = wordpool.animals;
     var optionsArray=[];
+    var $answerOptions = $('#answerOptions');
 
 $(document).ready(function(){
+
+    (function onStart(){
+        $answerOptions.show();
+        $('#correctAnswer').hide();   
+    })();  
 
     // window.speechSynthesis.voice = 
 
 
 
     $nextWord.on('click', function(){
+        
+        (function reset(){
+            optionsArray=[];
+            $answerOptions.show();
+            $('#correctAnswer').hide();
+            $('#option1').removeClass('incorrect');
+            $('#option2').removeClass('incorrect');
+            $('#option3').removeClass('incorrect');
+        })();
+
         // Select current Word
         currentWord = currWordPool[Math.floor(Math.random() * currWordPool.length)];
         // console.log(currentWord);
@@ -34,7 +50,7 @@ $(document).ready(function(){
             $('#gameWord h2').text(displayWord);
         })();
         (function optionsToDisplay(){
-            optionsArray.push(missingLetter);
+            optionsArray.push(missingLetter.toLowerCase());
             while (optionsArray.length<3){
                 var letter = String.fromCharCode(97 + Math.floor(Math.random() * 26));
                 if(optionsArray.indexOf(letter) === -1){
@@ -42,10 +58,27 @@ $(document).ready(function(){
                 }
             } 
             optionsArray = _.shuffle(optionsArray);
-            $('#options1').append(`<h3>${optionsArray[0]}</h3>`);
-            $('#options2').append(`<h3>${optionsArray[1]}</h3>`);
-            $('#options3').append(`<h3>${optionsArray[2]}</h3>`);
+            $('#option1').text(optionsArray[0]);
+            $('#option2').text(optionsArray[1]);
+            $('#option3').text(optionsArray[2]);
         })();
+    });
+
+    $answerOptions.on('click', '.answer', function checkAnswer(e){
+        if($(this).hasClass('answer')){
+            if (this.innerText === missingLetter.toLowerCase()){
+                $('#gameWord h2').text(currentWord.word);
+                $('audio')[0].play();
+                $answerOptions.hide();
+                $('#correctAnswer').show();
+                console.log("Correct!");
+            }
+            else {
+                this.classList.add('incorrect');
+                $('audio')[1].play();
+                console.log("Incorrect!");
+            }
+        }
     });
 
     $cntrl.on('click', function(){

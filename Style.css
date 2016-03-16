@@ -16,3 +16,21 @@
     display:block;
     margin: 0 auto;
 }
+
+h2{
+    text-align: center;
+    font-size: 90px;
+}
+
+#answerOptions {
+    font-size: 70px;
+    text-align:center;
+}
+
+
+.incorrect {
+    background-image: url("http://vignette1.wikia.nocookie.net/suitelife/images/4/42/600px-Red_x.svg_.png/revision/latest?cb=20110216202152");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

@@ -1,3 +1,18 @@
 .glyphicon {
     font-size: 100px;
 }
+
+.navbar {
+    height:75px;
+}
+
+.navbar-nav {
+    font-size: 60px;
+    padding-top: 10px;
+}
+
+#currentImg {
+    height: 300px;
+    display:block;
+    margin: 0 auto;
+}

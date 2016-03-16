@@ -3,54 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Spelling Game</title>
+
+    <script src="Wordpool.js"></script>
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="Style.css">
 
 </head>
 <body>  
     <div class="container">
-        <!-- Title Bar -->
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                
-            </div>
-        </div>
+
         <!-- Nav Bar -->
         <div class="row">
-            <div class="col-md-12">
-                
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                            <img alt="Brand" src="http://www.birdvilleschools.net/cms/lib2/TX01000797/Centricity/Domain/4818/spelling1.jpg" height = "58px">
+                        </a>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link2</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        <!-- Title Bar -->
+        <div class="row">
+            <div class="col-md-5 col-md-offset-4">
+                <h1>What's the missing letter?</h1>
             </div>
         </div>
-        <!-- GameCard -->
+        <!-- Gamecard Image-->
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <a href="#"  ><span id="playAudio" class="glyphicon glyphicon-play-circle"></span></a>
+                <br><br><br><br>
+                <button id="nextWord" type="button" class="btn btn-primary btn-lg">Next Word</button> 
 
             </div>
-            <div class="col-md-10">
+            <div class="col-md-11">
+                <img id = "currentImg" src="">
                 
             </div>
         </div>
+
+
+        <!-- Gamecard Word -->
+        <div class="row">
+            <div id="gameWord" class="col-md-6 col-md-offset-3">
+                <h2></h2>
+            </div>
+        </div>
+
+
+
         <!-- Options/Learn it in another language -->
         <div class="row">
             <!-- Options -->
             <div class= "answerOptions">
-                <div class="col-md-4">
+                <div id="option1" class="col-md-2 col-md-offset-3">
                     
                 </div> 
-                <div class="col-md-4">
+                <div id="option2" class="col-md-2">
                     
                 </div>
-                <div class="col-md-4">
+                <div id="option3" class="col-md-2">
                     
                 </div>
             </div>
@@ -68,6 +100,7 @@
         </div>
     </div>
 
-    
+    <script src="https://cdn.jsdelivr.net/lodash/4.6.1/lodash.min.js "></script>
+    <script src="App.js"></script>
 </body>
 </html>

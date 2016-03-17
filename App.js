@@ -1,5 +1,6 @@
     var synth = window.speechSynthesis;
     var $cntrl = $('#playAudio');
+    var $spanishcntrl = $('#playSpanishAudio');
     var $currentImg = $('#currentImg');
     var currentWord;
     var missingLetter;
@@ -10,11 +11,14 @@
     var optionsArray=[];
     var $answerOptions = $('#answerOptions');
 
+
 $(document).ready(function(){
 
     (function onStart(){
         $answerOptions.show();
-        $('#correctAnswer').hide();   
+        $('#spanish').hide();   
+        $('#wikipedia').hide(); 
+        $('#speaker').hide();  
     })();  
 
     // window.speechSynthesis.voice = 
@@ -26,10 +30,13 @@ $(document).ready(function(){
         (function reset(){
             optionsArray=[];
             $answerOptions.show();
-            $('#correctAnswer').hide();
+            $('#spanish').hide();
+            $('#wikipedia').hide();
+            $('#speaker').hide();
             $('#option1').removeClass('incorrect');
             $('#option2').removeClass('incorrect');
             $('#option3').removeClass('incorrect');
+            $('#wikipediaArticle').empty();
         })();
 
         // Select current Word
@@ -40,12 +47,41 @@ $(document).ready(function(){
         //sets word to be spoken
         utterWord = new SpeechSynthesisUtterance(currentWord.word);
 
+
+        // Get Wikipedia information
+        (function setWikipedia(){        
+            $.ajax({
+                url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&list=&meta=&indexpageids=1&titles=${currentWord.word}&exintro=1`,
+                jsonp: "callback",
+                dataType: "jsonp",
+                success: function( response ) {
+                    var pageId = response.query.pageids[0]; 
+                    var wordInfo = response.query.pages[pageId].extract;
+                    console.log(wordInfo);
+                    $('#wikipediaArticle').append(wordInfo);
+                }
+            });
+        })();
+
+        //Translate to spanishe
+        (function translateSpanish(){
+            $.ajax({
+                url: `https://www.googleapis.com/language/translate/v2?key=AIzaSyD4G1Wqh3g-a3tnHO4340FPDqiOxqz5x-Y&q=${currentWord.word}&source=en&target=es`,
+                dataType: "json",
+                success: function (response){
+                    console.log(response);
+                    // $('#spanish h4').text(response);
+                    // $('')
+                }
+            });
+        })();
+
         // displays word with missing letter and call function
         (function wordToDisplay(){
             // randomly choose missing letter
             missingLetter = _.sample(`${currentWord.word}`);
             //Split string at missing letter and join with underscore
-            var displayWord = currentWord.word.split(missingLetter).join("__");
+            displayWord = currentWord.word.split(missingLetter).join("__");
             //append word with missing letter to div
             $('#gameWord h2').text(displayWord);
         })();
@@ -62,6 +98,9 @@ $(document).ready(function(){
             $('#option2').text(optionsArray[1]);
             $('#option3').text(optionsArray[2]);
         })();
+        (function populateWikipedia(){
+
+        })();
     });
 
     $answerOptions.on('click', '.answer', function checkAnswer(e){
@@ -70,7 +109,9 @@ $(document).ready(function(){
                 $('#gameWord h2').text(currentWord.word);
                 $('audio')[0].play();
                 $answerOptions.hide();
-                $('#correctAnswer').show();
+                $('#spanish').show();
+                $('#wikipedia').show();
+                $('#speaker').show();
                 console.log("Correct!");
             }
             else {
@@ -84,5 +125,7 @@ $(document).ready(function(){
     $cntrl.on('click', function(){
         synth.speak(utterWord);
     });
+
+
 
 });

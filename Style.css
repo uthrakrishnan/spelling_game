@@ -34,3 +34,11 @@ h2{
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.coloredLetter {
+    font-color: green;
+}
+
+#wikipedia {
+    margin-left:10px;
+}

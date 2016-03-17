@@ -20,7 +20,8 @@ $(document).ready(function(){
     (function onStart(){
         $answerOptions.show();   
         $('#wikipedia').hide(); 
-        $('#translations').hide();  
+        $('#translations').hide();
+        $('#directions').show();  
     })();  
 
     // window.speechSynthesis.voice = 
@@ -38,6 +39,7 @@ $(document).ready(function(){
             $('#option2').removeClass('incorrect');
             $('#option3').removeClass('incorrect');
             $('#wikipediaArticle').empty();
+            $('#directions').hide();
         })();
 
         // Select current Word
@@ -141,7 +143,7 @@ $(document).ready(function(){
             });
         })();
 
-        
+
 
         // displays word with missing letter and call function
         (function wordToDisplay(){

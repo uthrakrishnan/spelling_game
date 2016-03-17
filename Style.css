@@ -30,6 +30,14 @@ h2{
     font-size: 90px;
 }
 
+p {
+    font-size: 18px;
+}
+
+#directions>h3 {
+    font-size: 30px;
+}
+
 #answerOptions {
     font-size: 70px;
     text-align:center;

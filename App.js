@@ -1,8 +1,11 @@
+
+
+$(document).ready(function(){
     var synth = window.speechSynthesis;
     var $cntrl = $('#playAudio');
     var $spanishcntrl = $('#playSpanishAudio');
     var $chinesecntrl = $('#playChineseAudio');
-    var $tamilcntrl = $('#playTamilAudio');
+    var $frenchcntrl = $('#playFrenchAudio');
     var $currentImg = $('#currentImg');
     var currentWord;
     var missingLetter;
@@ -13,9 +16,6 @@
     var currWordPool = wordpool.animals;
     var optionsArray=[];
     var $answerOptions = $('#answerOptions');
-
-
-$(document).ready(function(){
 
     (function onStart(){
         $answerOptions.show();   
@@ -53,9 +53,10 @@ $(document).ready(function(){
 
 
         // Get Wikipedia information
-        (function setWikipedia(){        
+        (function setWikipedia(){ 
+
             $.ajax({
-                url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&list=&meta=&indexpageids=1&titles=${currentWord.word}&exintro=1`,
+                url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&list=&meta=&indexpageids=1&titles=${currentWord.word}&exsentences=15&exintro=1`,
                 jsonp: "callback",
                 dataType: "jsonp",
                 success: function( response ) {
@@ -63,6 +64,17 @@ $(document).ready(function(){
                     var wordInfo = response.query.pages[pageId].extract;
                     console.log(wordInfo);
                     $('#wikipediaArticle').append(wordInfo);
+                }
+            });
+            $.ajax({
+                url: `https://en.wikipedia.org/w/api.php?action=query&format=json&indexpageids=1&prop=info&inprop=url&titles=${currentWord.word}`,
+                jsonp: "callback",
+                dataType: "jsonp",
+                success: function( response ) {
+                    var pageId = response.query.pageids[0];
+                    var wordURL = response.query.pages[pageId].canonicalurl;
+                    console.log(wordURL);
+                    $('#wikipediaLink').attr('href', wordURL);
                 }
             });
         })();
@@ -83,18 +95,18 @@ $(document).ready(function(){
             });
         })();
 
-        //Translate to Tamil
+        //Translate to French
         (function translateTamil(){
             $.ajax({
-                url: `https://www.googleapis.com/language/translate/v2?key=AIzaSyD4G1Wqh3g-a3tnHO4340FPDqiOxqz5x-Y&q=${currentWord.word}&source=en&target=ta`,
+                url: `https://www.googleapis.com/language/translate/v2?key=AIzaSyD4G1Wqh3g-a3tnHO4340FPDqiOxqz5x-Y&q=${currentWord.word}&source=en&target=fr`,
                 dataType: "json",
                 success: function (response){
-                    var tamilWord = response.data.translations[0].translatedText;
-                    $('#tamil').text(tamilWord);
-                    utterTamilWord = new SpeechSynthesisUtterance(tamilWord);
-                    utterTamilWord.lang = "id-ID";
-                    utterTamilWord.name= "Damayanti";
-                    utterTamilWord.voiceURI = "Damayanti";
+                    var frenchWord = response.data.translations[0].translatedText;
+                    $('#french').text(frenchWord);
+                    utterFrenchWord = new SpeechSynthesisUtterance(frenchWord);
+                    utterFrenchWord.lang = "fr-FR";
+                    utterFrenchWord.name= "Google français";
+                    utterFrenchWord.voiceURI = "Google français";
                 }
             });
         })();
@@ -172,8 +184,8 @@ $(document).ready(function(){
         synth.speak(utterSpanishWord);
     });
 
-    $tamilcntrl.on('click', function(){
-        synth.speak(utterTamilWord);
+    $frenchcntrl.on('click', function(){
+        synth.speak(utterFrenchWord);
     });
 
     $chinesecntrl.on('click', function(){

@@ -22,109 +22,118 @@
 
 </head>
 <body>
-    <div class="container">
+    <img id="backgroundImage" src="https://images.unsplash.com/photo-1428591345840-8f3d75d06246?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=5d4cc0bc53bc6f994fa46ba47fc9dcd0">
+    <div class="container-fluid">
 
-        <!-- Nav Bar -->
+        <!--ROW 1 -->
+        <!-- Nav Pill and Header -->
+        <div class ="row header">
+            <div class = "col-md-2">
+                <ul class="nav nav-pills">
+                    <li><img alt="Brand" src="http://www.birdvilleschools.net/cms/lib2/TX01000797/Centricity/Domain/4818/spelling1.jpg" height = "58px"></li>  
+                </ul>
+            </div>
+
+            <!-- AudioTags -->
+            
+            <div>
+                <audio id="cheering" src="cheering.mp3"></audio>
+                <audio id="buzzer" src="tone.mp3"></audio>
+            </div>
+
+            <!-- Title Bar -->
+                
+            <div class="col-md-6">
+                <h1>Find the missing letters</h1>
+            </div>   
+        </div>
+        <br><br>
+
+
+        <!-- ROW2 -->
         <div class="row">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
-                            <img alt="Brand" src="http://www.birdvilleschools.net/cms/lib2/TX01000797/Centricity/Domain/4818/spelling1.jpg" height = "58px">
-                        </a>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link2</a></li>
-                        </ul>
+            <!-- SUBCOntainer LEFT -->
+            <div class="col-md-8">
+                <!-- SUBROW 1 -->
+                <div class="row">
+                    <!-- Gamecard Image-->
+                    <div class="col-md-2">
+                        <a href="#"><span id="playAudio" class="glyphicon glyphicon-play-circle"></span></a>
+                        <br><br><br><br>
+                        <button id="nextWord" type="button" class="btn btn-primary btn-lg">Next Word</button> 
+
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <img id = "currentImg" src="">
+                        
                     </div>
                 </div>
-            </nav>
-        </div>
-        <!-- AudioTags -->
-        
-        <div>
-            <audio id="cheering" src="cheering.mp3"></audio>
-            <audio id="buzzer" src="tone.mp3"></audio>
-        </div>
-
-        <!-- Title Bar -->
-        <div class="row">
-            <div class="col-md-5 col-md-offset-4">
-                <h1>What's the missing letter?</h1>
-            </div>
-        </div>
-        <!-- Gamecard Image-->
-        <div class="row">
-            <div class="col-md-1">
-                <a href="#"  ><span id="playAudio" class="glyphicon glyphicon-play-circle"></span></a>
-                <br><br><br><br>
-                <button id="nextWord" type="button" class="btn btn-primary btn-lg">Next Word</button> 
-
-            </div>
-            <div class="col-md-11">
-                <img id = "currentImg" src="">
-                
-            </div>
-        </div>
-
-
-        <!-- Gamecard Word -->
-        <div class="row">
-            <div id="gameWord" class="col-md-6 col-md-offset-3">
-                <h2></h2>
-            </div>
-        </div>
-
-
-        <hr>
-        <!-- Options/Learn it in another language -->
-        <div class="row">
-            <!-- Options -->
-            <div id="answerOptions" class= "col-md-12">
-                <div id="option1" class="answer col-md-2 col-md-offset-3">
-                    
-                </div> 
-                <div id="option2" class="answer col-md-2">
-                    
+                <!-- SUBROW 2 -->
+                <!-- Gamecard Word -->
+                <div class="row">
+                    <div id="gameWord" class="col-md-8 col-md-offset-4">
+                        <h2></h2>
+                    </div>
                 </div>
-                <div id="option3" class="answer col-md-2">
-                    
+                <!-- SUBROW 3 -->
+                <div class="row">
+                    <!-- Options -->
+                    <div id="answerOptions" class= "col-md-12">
+                        <div id="option1" class="answer col-md-3 col-md-offset-3">
+                            
+                        </div> 
+                        <div id="option2" class="answer col-md-3">
+                            
+                        </div>
+                        <div id="option3" class="answer col-md-3">
+                            
+                        </div>
+                    </div>
+                    <!-- Languages -->
+                    <div id="translations" class="col-md-12">
+                        <div class ="col-md-3 col-md-offset-4">
+                            <h3>Spanish Translation</h3>
+                            <h4 id="spanish"></h4>
+                            <div>
+                                <a href="#"><span id="playSpanishAudio" class="glyphicon glyphicon-volume-up"></span></a> 
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <h3>French Translation</h3>
+                            <h4 id="french"></h4>
+                            <div>
+                                <a href="#"><span id="playFrenchAudio" class="glyphicon glyphicon-volume-up"></span></a> 
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <h3>Mandarin Translation</h3>
+                            <h4 id="chinese"></h4>
+                            <div>
+                                <a href="#"><span id="playChineseAudio" class="glyphicon glyphicon-volume-up"></span></a> 
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <!-- Languages -->
-            <div id="translations" class="col-md-2">
-                <h3>Spanish Translation</h3>
-                <h4 id="spanish"></h4>
-                <div>
-                    <a href="#"><span id="playSpanishAudio" class="glyphicon glyphicon-volume-up"></span></button></a> 
-                </div>
-                <br><br>
-                <h3>Tamil Translation</h3>
-                <h4 id="tamil"></h4>
-                <div>
-                    <a href="#"><span id="playTamilAudio" class="glyphicon glyphicon-volume-up"></span></button></a> 
-                </div>
-                <h3>Mandarin Translation</h3>
-                <h4 id="chinese"></h4>
-                <div>
-                    <a href="#"><span id="playChineseAudio" class="glyphicon glyphicon-volume-up"></span></button></a> 
-                </div>
-            </div>
-            <div id="wikipedia" class="col-md-9">
+            <!-- SUBCONTAINER RIGHT -->
+            <div id="wikipedia" class="col-md-4">
                 <h3>Wikipedia Article</h3>
                 <div id="wikipediaArticle"></div>
-                <a id="wikipediaLink" href=""><button type="button" class="btn btn-primary btn-lg">Learn More</button></a>
-
-                
-            </div>
-        </div>
-        <!--  -->
-        <div class="row">
-            <div class="col-md-6">
-                
+                <a id="wikipediaLink" target = "_blank" href=""><button type="button" class="btn btn-primary btn-lg">Learn More</button></a>
             </div>
         </div>
     </div>
+
+
+    
+
+
+       
+        
+
 
     <script src="https://cdn.jsdelivr.net/lodash/4.6.1/lodash.min.js "></script>
     <script src="App.js"></script>

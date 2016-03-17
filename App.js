@@ -54,18 +54,32 @@ $(document).ready(function(){
 
         // Get Wikipedia information
         (function setWikipedia(){ 
-
-            $.ajax({
-                url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&list=&meta=&indexpageids=1&titles=${currentWord.word}&exsentences=15&exintro=1`,
-                jsonp: "callback",
-                dataType: "jsonp",
-                success: function( response ) {
-                    var pageId = response.query.pageids[0]; 
-                    var wordInfo = response.query.pages[pageId].extract;
-                    console.log(wordInfo);
-                    $('#wikipediaArticle').append(wordInfo);
-                }
-            });
+            if(currentWord.word === "turkey"|| currentWord.word === "seal" || currentWord.word === "wolf"){
+                $.ajax({
+                    url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&list=&meta=&indexpageids=1&titles=${currentWord.search}&exsentences=15&exintro=1`,
+                    jsonp: "callback",
+                    dataType: "jsonp",
+                    success: function( response ) {
+                        var pageId = response.query.pageids[0]; 
+                        var wordInfo = response.query.pages[pageId].extract;
+                        console.log(wordInfo);
+                        $('#wikipediaArticle').append(wordInfo);
+                    }
+                });
+            }
+            else{
+                $.ajax({
+                    url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&list=&meta=&indexpageids=1&titles=${currentWord.word}&exsentences=15&exintro=1`,
+                    jsonp: "callback",
+                    dataType: "jsonp",
+                    success: function( response ) {
+                        var pageId = response.query.pageids[0]; 
+                        var wordInfo = response.query.pages[pageId].extract;
+                        console.log(wordInfo);
+                        $('#wikipediaArticle').append(wordInfo);
+                    }
+                });
+            }
             $.ajax({
                 url: `https://en.wikipedia.org/w/api.php?action=query&format=json&indexpageids=1&prop=info&inprop=url&titles=${currentWord.word}`,
                 jsonp: "callback",
@@ -126,6 +140,8 @@ $(document).ready(function(){
                 }
             });
         })();
+
+        
 
         // displays word with missing letter and call function
         (function wordToDisplay(){

@@ -32,7 +32,7 @@ var wordpool = {
                 {word: "ostrich", image: "http://www.onekind.org/uploads/a-z/az_ostriches.jpg"}, 
                 {word: "flamingo", image: "http://www.liveanimals.tv/wp-content/uploads/2014/03/flamingo-webcam.jpg"}, 
                 {search: "seal pinniped", word: "seal", image: "http://ccisolar.caltech.edu/images/filecabinet/folder23/seal-picture.jpg"}, 
-                {search: "sea lion", word: "sea lion", image: "http://localtvwiti.files.wordpress.com/2013/07/sea-lion.jpg?w=770"}, 
+                {word: "sea lion", image: "http://localtvwiti.files.wordpress.com/2013/07/sea-lion.jpg?w=770"}, 
                 {word: "lion", image: "http://animaliaz-life.com/data_images/lion/lion5.jpg"}, 
                 {word: "kangaroo", image: "https://upload.wikimedia.org/wikipedia/commons/5/5d/RedRoo.JPG"}, 
                 {word: "snake", image: "https://i.ytimg.com/vi/sPSFYGdoQyc/maxresdefault.jpg"}, 

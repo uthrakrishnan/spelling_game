@@ -1,9 +1,10 @@
 
-#backgroundImage{
+.backgroundImage{
     opacity:0.3;
     position:absolute;
     width:100%;
     height:100%;
+    z-index:-2;
 }
 
 .glyphicon {
@@ -34,12 +35,23 @@ p {
     font-size: 18px;
 }
 
-#little {
-    fonti-size: 10px;
+#wikipedia p, #directions p {
+    margin-left:10px;
+    font-size: 16px;
 }
 
-#directions>h3 {
+
+#directions h3, #wikipedia h3 {
     font-size: 30px;
+    margin-left:10px;
+}
+
+#wikipediaLink {
+    margin:10px;
+}
+
+#directions #little {
+    font-size: 12px;
 }
 
 #answerOptions {

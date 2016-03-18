@@ -27,9 +27,7 @@ $(document).ready(function(){
     // window.speechSynthesis.voice = 
 
 
-
-    $nextWord.on('click', function(){
-        
+    function goToNextWord(){
         (function reset(){
             optionsArray=[];
             $answerOptions.show();
@@ -174,9 +172,11 @@ $(document).ready(function(){
         (function populateWikipedia(){
 
         })();
-    });
+    }
 
-    $answerOptions.on('click', '.answer', function checkAnswer(e){
+     
+
+    function checkAnswer(e){
         if($(this).hasClass('answer')){
             if (this.innerText === missingLetter.toLowerCase()){
                 $('#gameWord h2').text(currentWord.word);
@@ -191,6 +191,16 @@ $(document).ready(function(){
                 $('audio')[1].play();
                 console.log("Incorrect!");
             }
+        }
+    }
+
+   
+    $nextWord.on('click', goToNextWord);
+    $answerOptions.on('click', '.answer', checkAnswer);
+
+    $(document).keyup(function(e){
+        if(e.which === 13){
+            goToNextWord();
         }
     });
 

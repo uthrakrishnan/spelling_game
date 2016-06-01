@@ -18,5 +18,5 @@ If an incorrect response is selected, a red X appears over the incorrect letter.
 When the correct letter is chosen, the word is shown completed. The app translates the word using the Google Translate API and displays audio recordings of the Spanish, French, and Mandarin translations which are spoken using the WebSpeech API formatted to speak with the proper accents. On the right hand side, the introductory portion of the Wikipedia page is displayed using the MediaWiki API. Clicking the Learn More button takes the player directly to the Wikipedia page.
 
 **Wikipedia Page**
-![Wikipedia](https://github.com/uthrakrishnan/spelling_game/blob/master/images/Wikipedia.png)
+![Wikipedia](https://github.com/uthrakrishnan/spelling_game/blob/master/images/Wikipedia.png) 
 
